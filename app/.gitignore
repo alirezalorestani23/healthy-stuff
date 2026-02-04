@@ -1,0 +1,44 @@
+# Gradle
+.gradle/
+build/
+
+# Local configuration file (SDK path, etc.)
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Kotlin/Java build outputs
+out/
+
+# macOS
+.DS_Store
+
+
+# Logs
+*.log
+
+# Keystores and keys
+*.jks
+*.keystore
+*.pem
+*.p12
+*.pfx
+
+# Google Services (if you add later and keep secrets out)
+google-services.json
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# Lint / analysis
+lint/
+lint-results*.html
+lint-results*.xml
