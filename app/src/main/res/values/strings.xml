@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">healthy stuff</string>
+
+    <string name="tab_dashboard">Dashboard</string>
+    <string name="tab_food">Food</string>
+    <string name="tab_workout">Workout</string>
+    <string name="tab_profile">Profile</string>
+
 </resources>
