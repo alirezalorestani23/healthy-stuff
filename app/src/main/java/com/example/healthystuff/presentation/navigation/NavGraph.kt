@@ -4,12 +4,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.healthystuff.presentation.screen.dashboard.DashboardScreen
 import com.example.healthystuff.presentation.screen.food.FoodLogScreen
+import com.example.healthystuff.presentation.screen.food.FoodRoutes
+import com.example.healthystuff.presentation.screen.food.detail.FoodEntryDetailScreen
 import com.example.healthystuff.presentation.screen.profile.ProfileScreen
 import com.example.healthystuff.presentation.screen.workout.WorkoutLogScreen
 
@@ -32,9 +36,24 @@ fun NavGraph(startDestination: String = Screen.Dashboard.route) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Dashboard.route) { DashboardScreen() }
-            composable(Screen.FoodLog.route) { FoodLogScreen() }
+            composable(Screen.FoodLog.route) {
+                FoodLogScreen(
+                    onEntryClick = { entryId ->
+                        navController.navigate(FoodRoutes.detail(entryId))
+                    }
+                )
+            }
             composable(Screen.WorkoutLog.route) { WorkoutLogScreen() }
             composable(Screen.Profile.route) { ProfileScreen() }
+            composable(
+                route = FoodRoutes.Detail,
+                arguments = listOf(navArgument("entryId") {
+                    type =
+                        NavType.LongType
+                })
+            ) {
+                FoodEntryDetailScreen()
+            }
         }
     }
 }

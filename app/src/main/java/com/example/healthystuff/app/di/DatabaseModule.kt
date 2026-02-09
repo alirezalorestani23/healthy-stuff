@@ -3,6 +3,7 @@ package com.example.healthystuff.app.di
 import android.content.Context
 import androidx.room.Room
 import com.example.healthystuff.data.local.db.AppDatabase
+import com.example.healthystuff.data.local.db.FoodLogDao
 import com.example.healthystuff.data.local.db.MealDao
 import com.example.healthystuff.data.local.db.WorkoutDao
 import dagger.Module
@@ -22,7 +23,9 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             "healthystuff.db"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides
@@ -30,4 +33,8 @@ object DatabaseModule {
 
     @Provides
     fun provideWorkoutDao(db: AppDatabase): WorkoutDao = db.workoutDao()
+
+    @Provides
+    fun provideFoodLogDao(db: AppDatabase): FoodLogDao = db.foodLogDao()
+
 }

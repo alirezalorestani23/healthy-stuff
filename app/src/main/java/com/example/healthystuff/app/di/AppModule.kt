@@ -1,9 +1,11 @@
 package com.example.healthystuff.app.di
 
 import com.example.healthystuff.data.repository.AiRepositoryImpl
+import com.example.healthystuff.data.repository.FoodLogRepositoryImpl
 import com.example.healthystuff.data.repository.MealRepositoryImpl
 import com.example.healthystuff.data.repository.WorkoutRepositoryImpl
 import com.example.healthystuff.domain.repository.AiRepository
+import com.example.healthystuff.domain.repository.FoodLogRepository
 import com.example.healthystuff.domain.repository.MealRepository
 import com.example.healthystuff.domain.repository.WorkoutRepository
 import dagger.Binds
@@ -22,4 +24,7 @@ abstract class AppModule {
 
     @Binds
     abstract fun bindAiRepository(impl: AiRepositoryImpl): AiRepository
+
+    @Binds
+    abstract fun bindFoodLogRepository(impl: FoodLogRepositoryImpl): FoodLogRepository
 }
